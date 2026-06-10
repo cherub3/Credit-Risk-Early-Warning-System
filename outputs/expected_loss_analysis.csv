@@ -1,0 +1,6 @@
+risk_segment,borrower_count,total_expected_loss,avg_expected_loss,el_share
+Low Risk,47316.0,23706559.83,501.03,0.04
+Medium Risk,83566.0,90852985.21,1087.2,0.14
+High Risk,107605.0,246913630.2,2294.63,0.39
+Critical Risk,54608.0,273446842.61,5007.45,0.43
+TOTAL PORTFOLIO,293095.0,634920017.8385322,2166.260147182764,1.0

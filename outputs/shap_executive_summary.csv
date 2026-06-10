@@ -1,0 +1,20 @@
+Feature,Average Impact,Direction,Business Interpretation
+sub_grade,0.33292437969941896,Increases Risk,Higher (riskier) LendingClub sub-grade increases predicted default risk.
+loan_term_flag,0.23397100581601335,Increases Risk,60-month loans carry materially higher default risk than 36-month loans.
+fico_score,0.1510667552933871,Decreases Risk,Higher bureau credit score reduces predicted default risk.
+dti,0.14996979427979681,Increases Risk,Higher debt-to-income ratio increases predicted default risk.
+int_rate,0.12988158669414265,Increases Risk,Higher market-assigned interest rate signals higher priced-in risk.
+home_ownership,0.10848869793585579,Increases Risk,Renting (vs owning/mortgage) is associated with higher default risk.
+monthly_payment_burden,0.05337701541460608,Increases Risk,A loan payment consuming more of monthly income increases default risk.
+annual_inc,0.052993569482980195,Decreases Risk,Higher annual income reduces predicted default risk.
+income_to_loan_ratio,0.05147654844896674,Decreases Risk,A smaller loan relative to income reduces default risk.
+credit_history_years,0.04650965198877867,Decreases Risk,Longer credit history reduces predicted default risk.
+revol_util,0.04200205208726095,Decreases Risk,Higher revolving credit utilization increases default risk.
+emp_length,0.039965010780919456,Increases Risk,Shorter employment tenure is associated with higher default risk.
+verification_status,0.03521725488770643,Increases Risk,"Income verification status has a modest, mixed effect on default risk."
+loan_amnt,0.02303729121862478,Increases Risk,Larger loan amounts are associated with modestly higher default risk.
+purpose,0.022927973685070765,Increases Risk,"Loan purpose has a modest effect, varying by stated reason for borrowing."
+pub_rec_flag,0.01931655203786207,Increases Risk,Any public derogatory record increases default risk.
+credit_stress_score,0.01113551952183113,Decreases Risk,Higher combined DTI/utilization stress increases default risk.
+delinquency_flag,0.005633810757681535,Increases Risk,A recent delinquency increases default risk.
+high_utilization_flag,0.001820818266738921,Decreases Risk,Utilization above 75% has a small additional risk-increasing effect.

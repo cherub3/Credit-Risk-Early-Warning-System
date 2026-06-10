@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Claude Code
+.claude/
+
+# CatBoost training artifacts
+catboost_info/
+
+# Full raw datasets (keep sample_data/)
+datasets/
+
+# VS Code
+.vscode/
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Streamlit secrets
+.streamlit/secrets.toml
+
+# OS files
+.DS_Store
+Thumbs.db

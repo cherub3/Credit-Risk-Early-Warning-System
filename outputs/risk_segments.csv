@@ -1,0 +1,5 @@
+risk_segment,borrower_count,portfolio_share,actual_default_rate,avg_pd,avg_loan_amnt,avg_int_rate
+Low Risk,47316,0.1614,0.0597,0.0597,14227.2112,7.087
+Medium Risk,83566,0.2851,0.1461,0.1461,12405.446,10.4951
+High Risk,107605,0.3671,0.2668,0.2668,14171.3429,14.3245
+Critical Risk,54608,0.1863,0.4486,0.4486,18412.8621,19.8114

@@ -1,0 +1,34 @@
+Feature,Business Logic,Signal Strength,Redundancy Risk,Decision
+sub_grade,"Granular LendingClub risk grade (A1-G5), ordinal",Strong,High vs grade - grade dropped as redundant refinement,KEEP
+fico_score,Midpoint of reported FICO band - bureau credit score,Strong,Low,KEEP (mandatory)
+dti,Existing debt burden relative to income,Strong,Low - distinct from revol_util (debt vs utilization),KEEP
+revol_util,Revolving credit utilization - proximity to credit limits,Strong,Low - distinct from dti,KEEP
+int_rate,Market pricing of risk by LendingClub,Strong,"Moderate vs sub_grade - kept as distinct market-pricing view, useful for Phase 8 pricing benchmark",KEEP
+monthly_payment_burden,Installment as % of monthly income - affordability of this loan structure,Strong,"Moderate vs income_to_loan_ratio - different question (affordability vs exposure size), both kept",KEEP
+delinquency_flag,Any delinquency in past 2 years - behavioral history,Strong,Low - cleaner binary form of delinq_2yrs (delinq_2yrs dropped),KEEP
+loan_term_flag,60-month vs 36-month loan structure,Strong,None - 1:1 recoding of term,KEEP
+income_to_loan_ratio,Loan size relative to annual income - exposure sizing,Moderate,"Moderate vs monthly_payment_burden - different question (exposure vs affordability), both kept",KEEP
+loan_amnt,Absolute size of credit exposure,Moderate,Moderate vs installment - installment dropped as redundant with monthly_payment_burden; loan_amnt kept for expected-loss calc,KEEP
+annual_inc,Borrower annual income - primary repayment resource,Moderate,Low - absolute capacity distinct from ratio features,KEEP
+pub_rec_flag,Any public derogatory record (bankruptcy/lien/judgment),Moderate,Low - cleaner binary form of pub_rec and pub_rec_bankruptcies (both dropped),KEEP
+purpose,Stated reason for the loan - behavioral/intent signal,Weak-Moderate,Low - categorical with no numeric overlap,KEEP
+home_ownership,Rent/Own/Mortgage - stability and collateral proxy,Weak,Low,KEEP
+verification_status,Whether income was verified by LendingClub,Weak,Low - retained for documented selection-bias finding (verified borrowers sometimes show higher default rates),KEEP
+emp_length,Years at current employer - income stability proxy,Weak,"High vs employment_stability_flag - flag dropped, raw value retained directly",KEEP
+credit_history_years,Length of credit history in years,Weak,Low,KEEP
+high_utilization_flag,Revolving utilization above 75% - FICO-aligned threshold rule,Weak-Moderate,"High vs revol_util - kept for pricing-engine rule logic, not statistical independence",KEEP
+grade,LendingClub coarse risk grade (A-G),Strong,Very high vs sub_grade - sub_grade is a strict refinement,DROP - redundant with sub_grade
+installment,Monthly repayment amount,Moderate,High vs monthly_payment_burden - burden already captures affordability,DROP - overlaps with monthly_payment_burden
+delinq_2yrs,Count of delinquencies in past 2 years,Weak,High vs delinquency_flag - flag is derived directly from this column,DROP - redundant with delinquency_flag
+pub_rec,Count of public derogatory records,Weak,High vs pub_rec_flag - flag is derived directly from this column,DROP - redundant with pub_rec_flag
+pub_rec_bankruptcies,Count of public bankruptcy records,Weak,High vs pub_rec_flag - same underlying signal,DROP - redundant with pub_rec_flag
+revol_bal,Outstanding revolving balance (absolute),Weak,High vs revol_util - utilization is the normalized and more interpretable version,DROP - redundant with revol_util
+open_acc,Number of open credit lines,Weak,Low signal - not tied to any EDA finding,DROP - weak undefended signal
+total_acc,Total credit lines ever opened,Weak,Low signal - not tied to any EDA finding,DROP - weak undefended signal
+mort_acc,Number of mortgage accounts,Weak,Low signal - not tied to any EDA finding,DROP - weak undefended signal
+inq_last_6mths,Credit inquiries in past 6 months,Weak,Low signal - not tied to any EDA finding,DROP - weak undefended signal
+employment_stability_flag,5+ years employment tenure (binary),Weak,High vs emp_length - flat default-rate curve in EDA showed no inflection at 5 years,DROP - emp_length retained directly with less duplication
+credit_lines_per_income,Open credit lines relative to income (proposed),Weak,Conflates credit access with credit stress - revol_util superior,DROP - weak business case
+annual_income_log,Log transform of annual_inc for linear model,N/A - transformation not a risk factor,Direct transform of annual_inc,"KEEP - Logistic Regression pipeline only, not in FINAL_MODEL_FEATURES"
+utilization_bucket,Low/Medium/High utilization band for dashboard,N/A - display only,Direct bucketing of revol_util,DISPLAY ONLY - EDA / Streamlit
+loan_to_income_bucket,Exposure tier for dashboard display,N/A - display only,Direct bucketing of income_to_loan_ratio,DISPLAY ONLY - EDA / Streamlit

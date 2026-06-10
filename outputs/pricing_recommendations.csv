@@ -1,0 +1,5 @@
+risk_segment,borrower_count,avg_pd,avg_expected_loss_rate,avg_recommended_apr,actual_int_rate,pricing_gap
+Low Risk,47316,0.0597,0.0358,0.1058,0.0709,0.035
+Medium Risk,83566,0.1461,0.0876,0.1576,0.105,0.0527
+High Risk,107605,0.2668,0.1601,0.2301,0.1432,0.0869
+Critical Risk,54608,0.4486,0.2691,0.3391,0.1981,0.141

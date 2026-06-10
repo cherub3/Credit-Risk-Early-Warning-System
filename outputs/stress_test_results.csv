@@ -1,0 +1,4 @@
+Scenario,PD Multiplier,Portfolio Expected Loss,Change vs Base (%)
+Base Case,1.0,634920017.84,0.0
+Mild Recession,1.3,825360078.46,29.99
+Severe Recession,1.7,1076234628.03,69.51

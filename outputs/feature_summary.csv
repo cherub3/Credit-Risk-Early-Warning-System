@@ -1,0 +1,35 @@
+Feature,Type,Business Meaning,Selected,Reason
+loan_amnt,Raw,Size of credit exposure,Yes,KEEP
+int_rate,Raw,LendingClub-assigned interest rate (market pricing of risk),Yes,KEEP
+sub_grade,Raw,Granular LendingClub risk grade (A1-G5) ordinally encoded,Yes,KEEP
+fico_score,Raw,Credit bureau score (midpoint of reported band),Yes,KEEP (mandatory)
+annual_inc,Raw,Borrower annual income (repayment capacity),Yes,KEEP
+dti,Raw,Debt-to-income ratio (existing debt burden),Yes,KEEP
+revol_util,Raw,Revolving credit utilization (%),Yes,KEEP
+emp_length,Raw,Years at current employer (0-10),Yes,KEEP
+credit_history_years,Raw,Length of credit history in years,Yes,KEEP
+home_ownership,Raw,Rent / Own / Mortgage status,Yes,KEEP
+purpose,Raw,Stated reason for the loan,Yes,KEEP
+verification_status,Raw,Whether income was verified by LendingClub,Yes,KEEP
+monthly_payment_burden,Engineered,Installment as % of monthly income (affordability),Yes,KEEP
+income_to_loan_ratio,Engineered,Loan size relative to annual income (exposure sizing),Yes,KEEP
+credit_stress_score,Engineered,Combined DTI x utilization stress measure,Yes,
+delinquency_flag,Engineered,Any delinquency in past 2 years (binary),Yes,KEEP
+pub_rec_flag,Engineered,Any public derogatory record (binary),Yes,KEEP
+loan_term_flag,Engineered,60-month loan vs 36-month loan (binary),Yes,KEEP
+high_utilization_flag,Engineered,Revolving utilization above 75% (binary),Yes,KEEP
+grade,Raw (rejected),LendingClub coarse risk grade (A-G),No,DROP - redundant with sub_grade
+installment,Raw (rejected),Monthly repayment amount,No,DROP - overlaps with monthly_payment_burden
+delinq_2yrs,Raw (rejected),Count of delinquencies in past 2 years,No,DROP - redundant with delinquency_flag
+pub_rec,Raw (rejected),Count of public derogatory records,No,DROP - redundant with pub_rec_flag
+pub_rec_bankruptcies,Raw (rejected),Count of public bankruptcy records,No,DROP - redundant with pub_rec_flag
+revol_bal,Raw (rejected),Outstanding revolving balance,No,DROP - redundant with revol_util
+open_acc,Raw (rejected),Number of open credit lines,No,DROP - weak undefended signal
+total_acc,Raw (rejected),Total credit lines ever opened,No,DROP - weak undefended signal
+mort_acc,Raw (rejected),Number of mortgage accounts,No,DROP - weak undefended signal
+inq_last_6mths,Raw (rejected),Credit inquiries in past 6 months,No,DROP - weak undefended signal
+employment_stability_flag,Engineered (rejected),5+ years employment tenure (binary),No,DROP - emp_length retained directly with less duplication
+credit_lines_per_income,Engineered (rejected candidate),Open credit lines relative to income,No,DROP - weak business case
+annual_income_log,Modeling transformation (LR only),Log transform of annual_inc - reduces skew for linear model,No,"KEEP - Logistic Regression pipeline only, not in FINAL_MODEL_FEATURES"
+utilization_bucket,Display only,Low/Medium/High utilization band for dashboard,No,DISPLAY ONLY - EDA / Streamlit
+loan_to_income_bucket,Display only,Exposure tier for dashboard display,No,DISPLAY ONLY - EDA / Streamlit

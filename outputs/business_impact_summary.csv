@@ -1,0 +1,5 @@
+,Loans Approved,Loans Rejected,Defaults Avoided,Estimated Loss Reduction ($),Revenue Foregone ($),Net Impact ($),Remaining Loss vs Baseline (%),Recall (% of all defaults)
+A: Approve Everyone,293095.0,0.0,0.0,0.0,0.0,0.0,100.0,0.0
+B: Reject Top 5%,278440.0,14655.0,8269.0,97910145.0,30086207.15,67823937.84,84.48,0.1212
+C: Reject Top 10%,263785.0,29310.0,14862.0,172908765.0,60179947.92,112728817.08,72.59,0.2178
+D: Reject Top 15%,249130.0,43965.0,20663.0,233533275.0,88759085.9,144774189.1,62.97,0.3028

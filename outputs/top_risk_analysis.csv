@@ -1,0 +1,4 @@
+Segment,Loans in Segment,Default Rate in Segment,Defaults Captured,Recall (% of all defaults),Portfolio Coverage (% of volume)
+Top 5%,14655,0.5642,8269,0.1212,0.0683
+Top 10%,29310,0.5071,14862,0.2178,0.134
+Top 15%,43965,0.47,20663,0.3028,0.1954
